@@ -31,7 +31,7 @@ ENV name John Dow
 ENTRYPOINT echo "Hello, $name"
 ```
 when container runs as **docker run -it < image >** will produce output
-
+```bash
 Hello, John Dow
-
+```
 Note that variable name is replaced with its value.
