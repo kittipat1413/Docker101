@@ -12,3 +12,26 @@
 ## Docker images and layers
    When Docker runs a container, it runs an image inside it. This image is usually built by executing Docker instructions, which add layers on top of existing image or OS distribution. OS distribution is the initial image and every added layer creates a new image.
    Final Docker image reminds an onion with OS distribution inside and a number of layers on top of it. For example, your image can be built by installing a number of deb packages and your application on top of Ubuntu 14.04 distribution.
+
+## Shell and Exec forms
+   All three instructions (RUN, CMD and ENTRYPOINT) can be specified in shell form or exec form. Let’s get familiar with these forms first, because the forms usually cause more confusion than instructions themselves.
+Shell form
+```
+<instruction> <command>
+```
+### Examples:
+```bash
+RUN apt-get install python3
+CMD echo "Hello world"
+ENTRYPOINT echo "Hello world"
+```
+When instruction is executed in shell form it calls /bin/sh -c <command> under the hood and normal shell processing happens. For example, the following snippet in Dockerfile
+```
+ENV name John Dow
+ENTRYPOINT echo "Hello, $name"
+```
+when container runs as __docker run -it <image>__ will produce output
+
+Hello, John Dow
+
+Note that variable name is replaced with its value.
