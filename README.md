@@ -30,7 +30,7 @@ When instruction is executed in shell form it calls /bin/sh -c <command> under t
 ENV name John Dow
 ENTRYPOINT echo "Hello, $name"
 ```
-when container runs as __docker run -it <image>__ will produce output
+when container runs as **docker run -it < image >** will produce output
 
 Hello, John Dow
 
