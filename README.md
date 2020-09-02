@@ -26,7 +26,7 @@ CMD echo "Hello world"
 ENTRYPOINT echo "Hello world"
 ```
 When instruction is executed in shell form it calls /bin/sh -c <command> under the hood and normal shell processing happens. For example, the following snippet in Dockerfile
-```
+```bash
 ENV name John Dow
 ENTRYPOINT echo "Hello, $name"
 ```
