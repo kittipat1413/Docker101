@@ -16,9 +16,9 @@
 ## Shell and Exec forms
    All three instructions (RUN, CMD and ENTRYPOINT) can be specified in shell form or exec form. Let’s get familiar with these forms first, because the forms usually cause more confusion than instructions themselves.
 ## Shell form
-```
-<instruction> <command>
-```
+
+**`<instruction> <command>`**
+
 ### Examples:
 ```bash
 RUN apt-get install python3
@@ -40,7 +40,7 @@ Note that variable name is replaced with its value.
 
 This is the preferred form for CMD and ENTRYPOINT instructions.
 
-**`<instruction> ["executable", "param1", "param2", ...]`**
+**`<instruction> ["executable", "param1", "param2", ...]c
 
 ### Examples:
 ```bash
