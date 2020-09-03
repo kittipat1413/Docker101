@@ -138,7 +138,7 @@ when container runs as **`docker run -it <image>`** will produce output
 ```bash
 Hello world
 ```
-but when container runs as **`docker run -it <image>`** John will result in
+but when container runs as **`docker run -it <image> John`** will result in
 ```bash
 Hello John
 ```
