@@ -151,5 +151,6 @@ Shell form of ENTRYPOINT ignores any CMD or docker run command line arguments.
 Use RUN instructions to build your image by adding layers on top of initial image.
 
 Prefer ENTRYPOINT to CMD when building executable Docker image and you need a command always to be executed. Additionally use CMD if you need to provide extra default arguments that could be overwritten from command line when docker container runs.
-
 Choose CMD if you need to provide a default command and/or arguments that can be overwritten from command line when docker container runs.
+
+# [Reference](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
