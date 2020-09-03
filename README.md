@@ -40,7 +40,7 @@ Note that variable name is replaced with its value.
 
 This is the preferred form for CMD and ENTRYPOINT instructions.
 
-**`<instruction> ["executable", "param1", "param2", ...]c
+**`<instruction> ["executable", "param1", "param2", ...]`**
 
 ### Examples:
 ```bash
