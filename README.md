@@ -70,3 +70,25 @@ when container runs as **`docker run -it <image>`** will produce output
 ```bash
 Hello, John Dow
 ```
+
+## RUN
+
+RUN instruction allows you to install your application and packages requited for it. It executes any commands on top of the current image and creates a new layer by committing the results. Often you will find multiple RUN instructions in a Dockerfile.
+
+RUN has two forms:
+
+    **`RUN <command> (shell form)`**
+    **`RUN ["executable", "param1", "param2"] (exec form)`**
+
+(The forms are described in detail in Shell and Exec forms section above.)
+
+A good illustration of RUN instruction would be to install multiple version control systems packages:
+```bash
+RUN apt-get update && apt-get install -y \
+  bzr \
+  cvs \
+  git \
+  mercurial \
+  subversion
+```
+Note that  **`apt-get update`** and  **`apt-get install`** are executed in a single RUN instruction. This is done to make sure that the latest packages will be installed. If  **`apt-get install`** were in a separate RUN instruction, then it would reuse a layer added by  **`apt-get update`**, which could had been created a long time ago.
