@@ -77,8 +77,8 @@ RUN instruction allows you to install your application and packages requited for
 
 RUN has two forms:
 
-    **`RUN <command> (shell form)`**
-    **`RUN ["executable", "param1", "param2"] (exec form)`**
+* **`RUN <command> (shell form)`**
+* **`RUN ["executable", "param1", "param2"] (exec form)`**
 
 (The forms are described in detail in Shell and Exec forms section above.)
 
@@ -99,9 +99,9 @@ CMD instruction allows you to set a default command, which will be executed only
 
 CMD has three forms:
 
-    **`CMD ["executable","param1","param2"]`** (exec form, preferred)
-    **`CMD ["param1","param2"]`** (sets additional default parameters for ENTRYPOINT in exec form)
-    **`CMD command param1 param2`** (shell form)
+* **`CMD ["executable","param1","param2"]`** (exec form, preferred)
+* **`CMD ["param1","param2"]`** (sets additional default parameters for ENTRYPOINT in exec form)
+* **`CMD command param1 param2`** (shell form)
 
 Again, the first and third forms were explained in Shell and Exec forms section. The second one is used together with ENTRYPOINT instruction in exec form. It sets default parameters that will be added after ENTRYPOINT parameters if container runs without command line arguments. See ENTRYPOINT for example.
 
