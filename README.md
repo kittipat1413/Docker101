@@ -117,3 +117,39 @@ but when container runs with a command, e.g., **`docker run -it <image> /bin/bas
 ```bash
 root@7de4bed89922:/#
 ```
+## ENTRYPOINT
+
+ENTRYPOINT instruction allows you to configure a container that will run as an executable. It looks similar to CMD, because it also allows you to specify a command with parameters. The difference is ENTRYPOINT command and parameters are not ignored when Docker container runs with command line parameters. (There is a way to ignore ENTTRYPOINT, but it is unlikely that you will do it.)
+
+ENTRYPOINT has two forms:
+
+* **`ENTRYPOINT ["executable", "param1", "param2"]`** (exec form, preferred)
+* **`ENTRYPOINT command param1 param2`** (shell form)
+
+Be very careful when choosing ENTRYPOINT form, because forms behaviour differs significantly.
+
+### Exec form
+Exec form of ENTRYPOINT allows you to set commands and parameters and then use either form of CMD to set additional parameters that are more likely to be changed. ENTRYPOINT arguments are always used, while CMD ones can be overwritten by command line arguments provided when Docker container runs. For example, the following snippet in Dockerfile
+```bash
+ENTRYPOINT ["/bin/echo", "Hello"]
+CMD ["world"]
+```
+when container runs as **`docker run -it <image>`** will produce output
+```bash
+Hello world
+```
+but when container runs as **`docker run -it <image>`** John will result in
+```bash
+Hello John
+```
+### Shell form
+
+Shell form of ENTRYPOINT ignores any CMD or docker run command line arguments.
+
+## The bottom line
+
+Use RUN instructions to build your image by adding layers on top of initial image.
+
+Prefer ENTRYPOINT to CMD when building executable Docker image and you need a command always to be executed. Additionally use CMD if you need to provide extra default arguments that could be overwritten from command line when docker container runs.
+
+Choose CMD if you need to provide a default command and/or arguments that can be overwritten from command line when docker container runs.
