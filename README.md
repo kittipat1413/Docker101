@@ -15,7 +15,7 @@
 
 ## Shell and Exec forms
    All three instructions (RUN, CMD and ENTRYPOINT) can be specified in shell form or exec form. Let’s get familiar with these forms first, because the forms usually cause more confusion than instructions themselves.
-Shell form
+## Shell form
 ```
 <instruction> <command>
 ```
@@ -35,3 +35,38 @@ when container runs as **`docker run -it < image >`** will produce output
 Hello, John Dow
 ```
 Note that variable name is replaced with its value.
+
+## Exec form
+
+This is the preferred form for CMD and ENTRYPOINT instructions.
+
+**`<instruction> ["executable", "param1", "param2", ...]`**
+
+### Examples:
+```bash
+RUN ["apt-get", "install", "python3"]
+CMD ["/bin/echo", "Hello world"]
+ENTRYPOINT ["/bin/echo", "Hello world"]
+```
+When instruction is executed in exec form it calls executable directly, and shell processing does not happen. For example, the following snippet in Dockerfile
+```bash
+ENV name John Dow
+ENTRYPOINT ["/bin/echo", "Hello, $name"]
+```
+when container runs as **`docker run -it <image>`** will produce output
+```bash
+Hello, $name
+```
+Note that variable name is not substituted.
+
+### How to run bash?
+
+If you need to run bash (or any other interpreter but sh), use exec form with **`/bin/bash`** as executable. In this case, normal shell processing will take place. For example, the following snippet in Dockerfile
+```bash
+ENV name John Dow
+ENTRYPOINT ["/bin/bash", "-c", "echo Hello, $name"]
+```
+when container runs as **`docker run -it <image>`** will produce output
+```bash
+Hello, John Dow
+```
