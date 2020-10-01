@@ -1,4 +1,4 @@
-# Docker101
+# Docker101 ### [Reference](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
 
 ## Docker RUN vs CMD vs ENTRYPOINT
    Some Docker instructions look similar and cause confusion among developers who just started using Docker or do it irregularly. In this post I will explain the difference                             between CMD, RUN, and ENTRYPOINT on examples.
@@ -153,7 +153,7 @@ Use RUN instructions to build your image by adding layers on top of initial imag
 Prefer ENTRYPOINT to CMD when building executable Docker image and you need a command always to be executed. Additionally use CMD if you need to provide extra default arguments that could be overwritten from command line when docker container runs.
 Choose CMD if you need to provide a default command and/or arguments that can be overwritten from command line when docker container runs.
 
-## [Reference](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
+
 
 
 # How to use an entrypoint script to initialize container data at runtime
@@ -163,7 +163,7 @@ How do I initialize/seed data into my container at runtime, before the daemon pr
 
 ## Resolution
 There's a very common pattern used to initialize stateful data in a container at runtime. Use a shell script as the ENTRYPOINT of a container, and execute the necessary setup steps before passing control to a long-running process.
-      1.Create a shell script with the following contents (named docker-entrypoint.sh in our example):
+### 1.Create a shell script with the following contents (named docker-entrypoint.sh in our example):
 ```bash
 #!/bin/bash
 set -e
@@ -180,7 +180,7 @@ fi
 
 exec "$@"
 ```
-      2.Your Dockerfile should then call this script. For example, the following Dockerfile is an excerpt from the postgres image:
+### 2.Your Dockerfile should then call this script. For example, the following Dockerfile is an excerpt from the postgres image:
 ```bash
 FROM debian:stretch
 ...
