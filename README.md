@@ -1,4 +1,4 @@
-# Docker101 ### [Reference](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
+# Docker101 ([Reference](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/))
 
 ## Docker RUN vs CMD vs ENTRYPOINT
    Some Docker instructions look similar and cause confusion among developers who just started using Docker or do it irregularly. In this post I will explain the difference                             between CMD, RUN, and ENTRYPOINT on examples.
