@@ -199,4 +199,4 @@ The script is invoked and given the argument postgres. The script checks if the 
   ``` 
    {"log":"Log line is here\n","stream":"stdout","time":"2019-01-01T11:11:11.111111111Z"}
   ```
-> <em>Warning</em> The `json-file` logging driver uses file-based storage. These files are designed to be exclusively accessed by the Docker daemon. Interacting with these files with external tools may interfere with Docker’s logging system and result in unexpected behavior, and should be avoided.
+> <em style="color:blue">Warning</em> The `json-file` logging driver uses file-based storage. These files are designed to be exclusively accessed by the Docker daemon. Interacting with these files with external tools may interfere with Docker’s logging system and result in unexpected behavior, and should be avoided.
