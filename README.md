@@ -223,3 +223,14 @@ The following example sets the log driver to `json-file` and sets the `max-size`
   }
 }
 ```
+> Note
+> `log-opts` configuration options in the `daemon.json` configuration file must be provided as strings. Boolean and numeric values (such as the value for `max-file` in the example above) must therefore be enclosed in quotes (").
+
+Restart Docker for the changes to take effect for newly created containers. Existing containers do not use the new logging configuration.
+
+You can set the logging driver for a specific container by using the `--log-driver` flag to `docker container create` or `docker run`:
+```bash
+$ docker run \
+      --log-driver json-file --log-opt max-size=10m \
+      alpine echo hello world
+```
