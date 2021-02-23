@@ -192,3 +192,11 @@ CMD ["postgres"]
 You can see that when the container starts up, the command portion is interprated to be sh -c 'docker-entrypoint.sh postgres'.
 
 The script is invoked and given the argument postgres. The script checks if the first argument sent to it is equal to the string postgres, and if so, executes a series of instructions to set up a database. Finally, the exec shell construct is invoked, so that the final command given becomes the container's PID 1. $@ is a shell variable that means "all the arguments", so that leaves us with simply exec postgres.
+
+## JSON File logging driver
+
+   By default, Docker captures the standard output (and standard error) of all your containers, and writes them in files using the JSON format. The JSON format annotates each line with its origin (stdout or stderr) and its timestamp. Each log file contains information about only one container
+  ``` 
+   {"log":"Log line is here\n","stream":"stdout","time":"2019-01-01T11:11:11.111111111Z"}
+  ```
+> <em>Warning</em> The `json-file` logging driver uses file-based storage. These files are designed to be exclusively accessed by the Docker daemon. Interacting with these files with external tools may interfere with Docker’s logging system and result in unexpected behavior, and should be avoided.
