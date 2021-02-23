@@ -199,6 +199,7 @@ The script is invoked and given the argument postgres. The script checks if the 
   ``` 
    {"log":"Log line is here\n","stream":"stdout","time":"2019-01-01T11:11:11.111111111Z"}
   ```
+   <p style="color:blue"><em>Warning</em></p>
 <blockquote style=
     "background-color: #f6fafe;
     border-left-color: #147ac8;
