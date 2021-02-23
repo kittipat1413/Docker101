@@ -199,7 +199,6 @@ The script is invoked and given the argument postgres. The script checks if the 
   ``` 
    {"log":"Log line is here\n","stream":"stdout","time":"2019-01-01T11:11:11.111111111Z"}
   ```
-   <p style="color:blue"><em>Warning</em></p>
 <blockquote style=
     "background-color: #f6fafe;
     border-left-color: #147ac8;
@@ -211,3 +210,16 @@ to be exclusively accessed by the Docker daemon. Interacting with these files
 with external tools may interfere with Docker’s logging system and result in
 unexpected behavior, and should be avoided.</p>
 </blockquote>
+
+To use the `json-file` driver as the default logging driver, set the `log-driver` and `log-opts` keys to appropriate values in the `daemon.json` file, which is located in `/etc/docker/` on Linux hosts or `C:\ProgramData\docker\config\` on Windows Server. For more information about configuring Docker using `daemon.json`, see [daemon.json](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file).
+
+The following example sets the log driver to `json-file` and sets the `max-size` and `max-file` options to enable automatic log-rotation.
+```yaml
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3" 
+  }
+}
+```
